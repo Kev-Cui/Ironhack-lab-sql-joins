@@ -5,7 +5,6 @@ USE Sakila;
 SELECT c.name AS category, COUNT(fc.film_id) AS films
 FROM category c
 JOIN film_category fc ON fc.category_id = c.category_id
-JOIN film f ON f.film_id = fc.film_id
 GROUP BY c.name;
 
 -- Retrieve the store ID, city, and country for each store.
@@ -74,3 +73,6 @@ INNER JOIN (
 INNER JOIN rental r ON i.inventory_id = r.inventory_id AND lr.latest_rental = r.rental_date
 GROUP BY f.film_id
 ORDER BY f.title;
+
+use sakila;
+SELECT * FROM rental WHERE MONTH(rental.rental_date) = '08' AND YEAR(rental.rental_date) = '2005';
